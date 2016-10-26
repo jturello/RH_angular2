@@ -1,0 +1,22 @@
+{
+  "name": "angular2-skeleton",
+  "description": "template for angular2 apps",
+  "main": "index.html",
+  "authors": [
+    "James Turello <jturello@yahoo.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angular",
+    "angular2",
+    "template"
+  ],
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
