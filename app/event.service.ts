@@ -6,7 +6,8 @@ import { EVENTS } from './mock-events';
 @Injectable()
 export class EventService {
 
-  getEvents():  Event[] {
-    return EVENTS;
+  getEvents():  Promise<Event[]> {
+    return Promise.resolve(EVENTS);
   }
+
 }

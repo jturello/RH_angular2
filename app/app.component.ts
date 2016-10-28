@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Event } from './event.model';
 import { Patient } from './patient.model';
 import { EventService } from './event.service';
-import { OnInit } from '@angular/core';
 
 
 @Component({
@@ -50,7 +49,7 @@ export class AppComponent implements OnInit {
   constructor(private eventService: EventService) { };
 
   getEvents(): void {
-    this.events = this.eventService.getEvents(); // .then(events => this.events = events);
+    this.eventService.getEvents().then(events => this.events = events);
   }
 
   ngOnInit(): void {
