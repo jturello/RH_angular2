@@ -1,30 +1,8 @@
 import { Component } from '@angular/core';
 import { Event } from './event.model';
 import { Patient } from './patient.model';
-
-var patient01 = new Patient(1, 'Joe Schmoe', 'AML with myelodysplasia');
-
-var jan0116 = new Date(2016, 0, 1);
-var jan0516 = new Date(2016, 0, 5);
-var jan0616 = new Date(2016, 0, 6);
-var jan1016 = new Date(2016, 0, 10);
-var jan1216 = new Date(2016, 0, 12);
-var jan1516 = new Date(2016, 0, 15);
-var jan3116 = new Date(2016, 0, 31);
-
-const EVENTS: Event[] = [
-    {name: 'event01', patient: patient01, date: jan0116}
-    , {name: 'event02', patient: patient01, date: jan0516}
-    , {name: 'event03', patient: patient01, date: jan0516}
-    , {name: 'event04', patient: patient01, date: jan0616}
-    , {name: 'event05', patient: patient01, date: jan1016}
-    , {name: 'event06', patient: patient01, date: jan1216}
-    , {name: 'event07', patient: patient01, date: jan1216}
-    , {name: 'event08', patient: patient01, date: jan1516}
-    , {name: 'event09', patient: patient01, date: jan1516}
-    , {name: 'event10', patient: patient01, date: jan1516}
-    , {name: 'event11', patient: patient01, date: jan3116}
-  ]
+import { EventService } from './event.service';
+import { OnInit } from '@angular/core';
 
 
 @Component({
@@ -62,10 +40,21 @@ const EVENTS: Event[] = [
           </div>
       </form>
       -->
-
-  `
+  `,
+  providers: [EventService]
 })
 
-export class AppComponent {
-  events = EVENTS;
+export class AppComponent implements OnInit {
+  events: Event[];
+
+  constructor(private eventService: EventService) { };
+
+  getEvents(): void {
+    this.events = this.eventService.getEvents(); // .then(events => this.events = events);
+  }
+
+  ngOnInit(): void {
+    this.getEvents();
+  }
+
 }
