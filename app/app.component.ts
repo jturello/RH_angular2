@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
   constructor(private eventService: EventService) { };
 
   getEvents(): void {
-    this.eventService.getEvents().then(events => this.events = events);
+    this.eventService.getEventsSlowly().then(events => this.events = events);
   }
 
   ngOnInit(): void {
