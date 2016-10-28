@@ -2,11 +2,13 @@ import { Patient } from './patient.model';
 
 export class Event {
 
-  constructor(public name: string, public patient: Patient, public date: Date) {
+  constructor(public name: string, public patient: Patient, public date: Date, public isPaliative: boolean) {
     this.name = name;
     this.patient = patient;
     this.date = date;
+    this.isPaliative = isPaliative;
   }
+
 }
 
 /*
