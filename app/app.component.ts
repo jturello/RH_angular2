@@ -13,7 +13,7 @@ import { EventService } from './event.service';
 
     <ul class="events">
       <li *ngFor="let event of events">
-        {{event.patient.name}}, {{event.patient.problem}}, {{event.name}}, {{event.date.getMonth() + 1}}/{{event.date.getDate()}}/{{event.date.getFullYear()}}
+        {{event.patient_name}}, {{event.problem}}, {{event.name}}, {{event.date_str}}, {{ event.isPaliative }}
       </li>
     </ul>
 
@@ -39,8 +39,7 @@ import { EventService } from './event.service';
           </div>
       </form>
       -->
-  `,
-  providers: [EventService]
+  `
 })
 
 export class AppComponent implements OnInit {
@@ -49,7 +48,7 @@ export class AppComponent implements OnInit {
   constructor(private eventService: EventService) { };
 
   getEvents(): void {
-    this.eventService.getEventsSlowly().then(events => this.events = events);
+    this.eventService.getEvents().then(events => this.events = events);
   }
 
   ngOnInit(): void {
