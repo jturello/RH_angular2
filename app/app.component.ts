@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Event } from './event.model';
 import { Patient } from './patient.model';
 import { EventService } from './event.service';
+import { EventGraph }   from './event-graph.component';
 
 
 @Component({
@@ -11,11 +12,15 @@ import { EventService } from './event.service';
 
     <h2>Events</h2>
 
+    <event-graph>Loading...</event-graph>
+
+<!--
     <ul class="events">
       <li *ngFor="let event of events">
-        {{event.patient_name}}, {{event.problem}}, {{event.name}}, {{event.date_str}}, {{ event.isPaliative }}
+        {{event.PatientID}}, {{event.Problem}}, {{event.ClinicalEvent}}, {{event.EventDate}}, {{ event.EventType }}
       </li>
     </ul>
+-->
 
     <!--
         <form>
