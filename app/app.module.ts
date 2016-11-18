@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
+import { EventGraph }    from './event-graph.component';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
@@ -17,7 +18,8 @@ import { EventService }  from './event.service';
     InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    EventGraph
   ],
   providers: [ EventService ],
   bootstrap: [ AppComponent ]
