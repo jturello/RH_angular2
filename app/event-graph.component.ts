@@ -60,29 +60,43 @@ export class EventGraph implements OnInit {
     let horizGuide = this.graph.append('g').attr("transform", "translate(0, 150)")
     this.yAxis(horizGuide);
 
+    var pointHeight = function(d, i, h) {
+      if(d.EventType == 1) {
+        return h * (1/5) + i * 20;
+      }
+      else {
+        return h * (4/5) - i * 20;
+      }
+    }
     this.svg.selectAll("circle")
       .data(data)
       .enter()
+      .append("g").classed("datapoint", true)
       .append("circle")
       .attr("cx", function(d) {
         return xScale(new Date(d.EventDate))
       })
-      .attr("cy", 60)
+      .attr("cy", function(d, i) {return pointHeight(d, i, 400)})
       .attr("r", 5)
       .attr("fill", "black")
       .exit();
 
-    this.graph.selectAll('line')
-      .data(data)
-      .enter()
-      .append()
+      this.svg.selectAll(".datapoint")
+        .data(data)
+        .append("text")
+        .text(function(d) { return d.ClinicalEvent })
+        .attr("x", function(d) {
+          return xScale(new Date(d.EventDate)) + 7;
+        })
+        .attr("y", function(d, i) { return pointHeight(d, i, 400 ) + 3})
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "11px")
   }
   updateGraph(data): void {
 
   }
   ngOnInit(): void {
     this.getEvents();
-    console.log(this.events);
   }
 
 }
